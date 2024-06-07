@@ -1,5 +1,6 @@
 package com.krong.kafkatest.config;
 
+import com.krong.kafkatest.model.KafkaEvent;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.support.SendResult;
@@ -17,18 +18,13 @@ import java.util.concurrent.CompletableFuture;
 @RequiredArgsConstructor
 public class KafkaProducerCluster {
 
-    private final KafkaTemplate<String, String> kafkaTemplate;
+    private final KafkaTemplate<String, KafkaEvent> kafkaTemplate;
 
     @Value("${spring.kafka.template.default-topic}")
     private String topicName;
 
-    public void sendMessage(String payload) {
-
-        Message<String> message = MessageBuilder
-                .withPayload(payload)
-                .setHeader(KafkaHeaders.TOPIC, topicName)
-                .build();
-        CompletableFuture<SendResult<String, String>> future = kafkaTemplate.send(message);
+    public void sendMessage(KafkaEvent payload) {
+        CompletableFuture<SendResult<String, KafkaEvent>> future = kafkaTemplate.send(topicName, payload);
         future.whenComplete((r, e) -> {
             if (e == null) {
                 log.info("Producer: success >> message: {}, offset: {}", r.getProducerRecord().value(), r.getRecordMetadata().offset());

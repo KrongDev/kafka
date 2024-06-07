@@ -64,3 +64,10 @@ kafka를 사용해서 String데이터만 송/수신 해보았습니다.
 추가적으로 구현되어야하는 것
 - 데이터 구조 추가
 - Kafka의 Topic-id와 같이 kafka Event의 payload뿐 아니라 header에 담기는 Event-id와 같은 정보들을 가져올 수 있어야합니다.
+
+### 2. 발행 Payload에 구조추가
+일반 데이터를 Event로 발행하는 일은 거의 없어 구조를 추가하였습니다.
+
+추가적으로 구현되어야하는 것
+- 다양한 데이터 타입 제공 및 Consuming -> 다형성으로 해결가능하지 않을까?
+- 여러 데이터 타입의 조회 확인 -> Spring Event와 같이 Listener의 parameter로 받아들이는 객체 타입에 따라 작동하는지 확인필요
