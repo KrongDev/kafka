@@ -64,3 +64,4 @@ kafka를 사용해서 String데이터만 송/수신 해보았습니다.
 추가적으로 구현되어야하는 것
 - 데이터 구조 추가
 - Kafka의 Topic-id와 같이 kafka Event의 payload뿐 아니라 header에 담기는 Event-id와 같은 정보들을 가져올 수 있어야합니다.
+
