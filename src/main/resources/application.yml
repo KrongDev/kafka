@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: kafka-test
+  config:
+    activate:
+      on-profile: default
+  kafka:
+    bootstrap-servers: localhost:9092
+    template:
+      default-topic: dev-topic
+    producer:
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+    consumer:
+      group-id: dev-group
+      value-deserializer: org.apache.kafka.common.serialization.ByteArrayDeserializer
