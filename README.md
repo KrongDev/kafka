@@ -55,6 +55,20 @@ docker pull apache/kafka:3.7.0
 docker run -p 9092:9092 apache/kafka:3.7.0 
 ```
 ---
+# Kafka 구성요소
+### Producer
+Producer는 지정한 Topic에 데이터를 보내는 역할을 담당합니다.  
+### Consumer
+Consumer는 Topic에 쌓여있는 데이터를 읽어오는 역할을 담당합니다.  
+그룹으로 묶게되면 그룹내에서는 Topic을 하나만 처리하며, 하나의 Consumer가 Topic의 데이터를 해소한 경우 같은 Group에 존재하는 나머지 Consumer들은 데이터를 읽어들일 수 없습니다.
+### Topic
+Topic은 주제라고 부르며 Topic은 여러개의 파티션으로 나뉘어 관리됩니다.  
+각 파티션은 메시지를 순서를 보장하여 저장 및 소모합니다.
+### Partition
+Topic내 논리적인 분할 단위이며, Offset을 통해 데이터의 순서를 보장합니다.  
+파티션을 통해 Topic은 병렬 처리가 가능합니다.
+
+---
 # 실제 작업하며 발전하는 과정
 ## Kafka 구축 후 고민 및 해결 방안
 ### 1. 기본 구성으로 구축
